@@ -35,6 +35,7 @@ export default function InputBlock() {
   function startRecognition() {
     SpeechRecognition.startListening({
       language: `${ownLanguage}`,
+      continuous: true,
     });
   }
 
@@ -50,10 +51,11 @@ export default function InputBlock() {
     let utter = new SpeechSynthesisUtterance();
 
     utter.lang = language;
-    utter.voice = voices[language === 'ru-ru' ? 57 : 18]
+    utter.voice = voices[language === 'ru-ru' ? 66 : 3]
     utter.text = text;
     window.speechSynthesis.speak(utter);
 
+    console.log(voices)
   }
   return (
     <div className="input__container">
@@ -78,6 +80,7 @@ export default function InputBlock() {
             onClick={() => speackText(translate, 'en-US')}
           ></box-icon>
         </div>
+
       </div>
 
       <div style={{ display: "flex", justifyContent: "center" }}>
